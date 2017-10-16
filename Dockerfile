@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y locales
 ENV LANGUAGE="en_US.UTF-8" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8"
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen
 
-RUN apt-get install -y wget git bash make bzip2 supervisor
+RUN apt-get install -y wget git bash make bzip2 supervisor && apt-get clean
 
 # switch from dash to bash to make "source activate" work
 RUN echo "dash dash/sh boolean false" | debconf-set-selections && \
